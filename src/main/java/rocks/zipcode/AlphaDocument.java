@@ -19,6 +19,6 @@ public class AlphaDocument extends Document {
     }
 
     private Boolean isAlpha(String s) {
-        return s.matches("[a-zA-Z]+");
+        return s.matches("[a-z A-Z]+");
     }
 }

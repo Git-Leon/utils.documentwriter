@@ -33,4 +33,20 @@ public class AlphaDocumentWriteTest {
         // when
         documentWriter.write(contentToBeWritten);
     }
+
+
+    @Test
+    public void writeTest() throws IOException {
+        // given
+        String fileName = "file.txt";
+        String expected = "The quick brown foxy";
+        AlphaDocument documentWriter = new AlphaDocument(fileName);
+
+        // when
+        documentWriter.write(expected);
+        String actual = documentWriter.read();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
 }
