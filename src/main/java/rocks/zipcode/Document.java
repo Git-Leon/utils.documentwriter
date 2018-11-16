@@ -46,21 +46,17 @@ public class Document implements DocumentInterface {
 
     @Override
     public String read() {
-        try {
-            List<String> lines = Files.readAllLines(file.toPath());
-            final StringBuilder stringBuilder = new StringBuilder();
-            for (int currentIndex = 0; currentIndex < lines.size(); currentIndex++) {
-                String currentString = lines.get(currentIndex);
-                stringBuilder.append(currentString);
-                int finalIndex = lines.size()-1;
-                if(currentIndex != finalIndex) {
-                    stringBuilder.append("\n");
-                }
+        List<String> lines = toList();
+        final StringBuilder stringBuilder = new StringBuilder();
+        for (int currentIndex = 0; currentIndex < lines.size(); currentIndex++) {
+            String currentString = lines.get(currentIndex);
+            stringBuilder.append(currentString);
+            int finalIndex = lines.size() - 1;
+            if (currentIndex != finalIndex) {
+                stringBuilder.append("\n");
             }
-            return stringBuilder.toString();
-        } catch (IOException e) {
-            throw new Error(e);
         }
+        return stringBuilder.toString();
     }
 
     @Override
@@ -75,6 +71,14 @@ public class Document implements DocumentInterface {
             printWriter.write(content);
             printWriter.close();
         } catch (FileNotFoundException e) {
+            throw new Error(e);
+        }
+    }
+
+    public List<String> toList() {
+        try {
+            return Files.readAllLines(file.toPath());
+        } catch (IOException e) {
             throw new Error(e);
         }
     }

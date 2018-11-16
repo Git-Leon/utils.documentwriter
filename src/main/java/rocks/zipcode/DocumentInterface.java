@@ -1,6 +1,7 @@
 package rocks.zipcode;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * @author leon on 16/11/2018.
@@ -17,6 +18,8 @@ public interface DocumentInterface {
     void replaceAll(String stringToReplace, String replacementString);
 
     void overWrite(String content);
+
+    List<String> toList();
 
     File getFile();
 
