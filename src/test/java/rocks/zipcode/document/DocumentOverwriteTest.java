@@ -1,0 +1,56 @@
+package rocks.zipcode.document;
+
+import org.junit.Assert;
+import org.junit.Test;
+import rocks.zipcode.Document;
+
+import java.io.IOException;
+
+/**
+ * @author leon on 16/11/2018.
+ */
+public class DocumentOverwriteTest {
+    @Test
+    public void writeTest1() throws IOException {
+        // given
+        String fileName = "file.txt";
+        String contentToBeOverwritten = "The quick brown fox";
+        String contentToBeWritten = "The quick browner fox";
+        Document documentWriter = new Document(fileName);
+        String expected = new StringBuilder(fileName)
+                .append("{")
+                .append(contentToBeWritten)
+                .append("}")
+                .toString();
+
+        // when
+        documentWriter.write(contentToBeOverwritten);
+        documentWriter.overWrite(contentToBeWritten);
+        String actual = documentWriter.toString();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void writeTest2() throws IOException {
+        // given
+        String fileName = "file.txt";
+        String contentToBeOverwritten = "The quick brown fox";
+        String contentToBeWritten = "The quick brownest fox";
+        Document documentWriter = new Document(fileName);
+        String expected = new StringBuilder(fileName)
+                .append("{")
+                .append(contentToBeWritten)
+                .append("}")
+                .toString();
+
+        // when
+        documentWriter.write(contentToBeOverwritten);
+        documentWriter.overWrite(contentToBeWritten);
+        String actual = documentWriter.toString();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+}
