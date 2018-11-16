@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DocumentWriteTest {
 
     @Test
-    public void writeTest1() throws IOException {
+    public void writeAlphaValuesTest() throws IOException {
         // given
         String fileName = "file.txt";
         String expected = "The quick brown fox";
@@ -27,10 +27,25 @@ public class DocumentWriteTest {
     }
 
     @Test
-    public void writeTest2() throws IOException {
+    public void writeSpecialCharactersTest() throws IOException {
         // given
         String fileName = "file.txt";
-        String expected = "The quicker browner fox";
+        String expected = "()";
+        Document documentWriter = new Document(fileName);
+
+        // when
+        documentWriter.write(expected);
+        String actual = documentWriter.read();
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void writeNumericValuesTest() throws IOException {
+        // given
+        String fileName = "file.txt";
+        String expected = "123";
         Document documentWriter = new Document(fileName);
 
         // when

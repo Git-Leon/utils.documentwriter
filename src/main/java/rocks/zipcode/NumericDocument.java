@@ -19,6 +19,6 @@ public class NumericDocument extends Document {
     }
 
     private Boolean isNumeric(String s) {
-        return s.matches("[0-9]+");
+        return s.matches("[0-9 ]+");
     }
 }
