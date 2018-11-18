@@ -13,10 +13,21 @@ import java.io.IOException;
 public class NumericDocumentWriteTest {
 
     @Test
-    public void writeNumericValuesToFile() throws IOException {
+    public void writeNumericValuesToFile123() throws IOException {
         // given
         String fileName = "file.txt";
         String contentToBeWritten = "123";
+        Document documentWriter = new NumericCharDocument(fileName);
+
+        // when
+        documentWriter.write(contentToBeWritten);
+    }
+
+    @Test
+    public void writeNumericValuesToFile987() throws IOException {
+        // given
+        String fileName = "file.txt";
+        String contentToBeWritten = "987";
         Document documentWriter = new NumericCharDocument(fileName);
 
         // when
