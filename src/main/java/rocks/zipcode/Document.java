@@ -14,7 +14,11 @@ public class Document implements DocumentInterface {
     private final File file;
 
     public Document(String fileName) throws IOException {
-        this.file = new File(fileName);
+        this(new File(fileName));
+    }
+
+    public Document(File file) throws IOException {
+        this.file = file;
         this.fileWriter = new FileWriter(file);
     }
 

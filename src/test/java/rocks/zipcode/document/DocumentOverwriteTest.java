@@ -15,18 +15,13 @@ public class DocumentOverwriteTest {
         // given
         String fileName = "file.txt";
         String contentToBeOverwritten = "The quick brown fox";
-        String contentToBeWritten = "The quick browner fox";
+        String expected = "The quick browner fox";
         Document documentWriter = new Document(fileName);
-        String expected = new StringBuilder(fileName)
-                .append("{")
-                .append(contentToBeWritten)
-                .append("}")
-                .toString();
+        documentWriter.write(contentToBeOverwritten);
 
         // when
-        documentWriter.write(contentToBeOverwritten);
-        documentWriter.overWrite(contentToBeWritten);
-        String actual = documentWriter.toString();
+        documentWriter.overWrite(expected);
+        String actual = documentWriter.read();
 
         // then
         Assert.assertEquals(expected, actual);
@@ -37,18 +32,13 @@ public class DocumentOverwriteTest {
         // given
         String fileName = "file.txt";
         String contentToBeOverwritten = "The quick brown fox";
-        String contentToBeWritten = "The quick brownest fox";
+        String expected = "The quick brownest fox";
         Document documentWriter = new Document(fileName);
-        String expected = new StringBuilder(fileName)
-                .append("{")
-                .append(contentToBeWritten)
-                .append("}")
-                .toString();
+        documentWriter.write(contentToBeOverwritten);
 
         // when
-        documentWriter.write(contentToBeOverwritten);
-        documentWriter.overWrite(contentToBeWritten);
-        String actual = documentWriter.toString();
+        documentWriter.overWrite(expected);
+        String actual = documentWriter.read();
 
         // then
         Assert.assertEquals(expected, actual);
