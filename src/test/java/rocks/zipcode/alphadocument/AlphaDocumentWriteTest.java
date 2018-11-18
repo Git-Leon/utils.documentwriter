@@ -2,7 +2,7 @@ package rocks.zipcode.alphadocument;
 
 import org.junit.Assert;
 import org.junit.Test;
-import rocks.zipcode.AlphaDocument;
+import rocks.zipcode.AlphaCharDocument;
 import rocks.zipcode.Document;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class AlphaDocumentWriteTest {
         // given
         String fileName = "file.txt";
         String contentToBeWritten = "123";
-        Document documentWriter = new AlphaDocument(fileName);
+        Document documentWriter = new AlphaCharDocument(fileName);
 
         // when
         documentWriter.write(contentToBeWritten);
@@ -28,7 +28,7 @@ public class AlphaDocumentWriteTest {
         // given
         String fileName = "file.txt";
         String contentToBeWritten = "()";
-        Document documentWriter = new AlphaDocument(fileName);
+        Document documentWriter = new AlphaCharDocument(fileName);
 
         // when
         documentWriter.write(contentToBeWritten);
@@ -40,7 +40,7 @@ public class AlphaDocumentWriteTest {
         // given
         String fileName = "file.txt";
         String expected = "The quick brown foxy";
-        Document documentWriter = new AlphaDocument(fileName);
+        Document documentWriter = new AlphaCharDocument(fileName);
 
         // when
         documentWriter.write(expected);
