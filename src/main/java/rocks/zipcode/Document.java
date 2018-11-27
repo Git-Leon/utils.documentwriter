@@ -50,17 +50,9 @@ public class Document implements DocumentInterface {
 
     @Override
     public String read() {
-        List<String> lines = toList();
-        final StringBuilder stringBuilder = new StringBuilder();
-        for (int currentIndex = 0; currentIndex < lines.size(); currentIndex++) {
-            String currentString = lines.get(currentIndex);
-            stringBuilder.append(currentString);
-            int finalIndex = lines.size() - 1;
-            if (currentIndex != finalIndex) {
-                stringBuilder.append("\n");
-            }
-        }
-        return stringBuilder.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        toList().forEach(line -> stringBuilder.append(line).append("\n"));
+        return stringBuilder.toString().replaceAll("\n$", "");
     }
 
     @Override
